@@ -10,3 +10,4 @@ You can create an .icns file from a PNG using:
 
 For now, electron-builder will use a default icon if this file is missing.
 
+~
