@@ -1,0 +1,80 @@
+{
+  "name": "docufier",
+  "version": "1.0.0",
+  "description": "Cross-platform desktop app for creating and viewing portable Markdown-based documents",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "pack": "node bin/docufier-pack.js",
+    "icon": "./scripts/create-icon.sh"
+  },
+  "keywords": [
+    "markdown",
+    "documentation",
+    "docsify",
+    "electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "yauzl": "^2.10.0"
+  },
+  "build": {
+    "appId": "com.docufier.app",
+    "productName": "Docufier",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg"
+      ],
+      "icon": "assets/icons/icon.icns",
+      "extendInfo": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Docufier Document",
+            "CFBundleTypeRole": "Viewer",
+            "CFBundleTypeIconFile": "icon.icns",
+            "LSItemContentTypes": [
+              "com.docufier.document"
+            ],
+            "LSHandlerRank": "Owner"
+          }
+        ],
+        "UTExportedTypeDeclarations": [
+          {
+            "UTTypeIdentifier": "com.docufier.document",
+            "UTTypeDescription": "Docufier Document",
+            "UTTypeTagSpecification": {
+              "public.filename-extension": [
+                "docf"
+              ]
+            },
+            "UTTypeConformsTo": [
+              "public.data",
+              "public.archive"
+            ]
+          }
+        ]
+      }
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "bin": {
+    "docufier-pack": "./bin/docufier-pack.js"
+  }
+}
+

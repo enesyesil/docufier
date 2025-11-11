@@ -1,0 +1,36 @@
+appId: com.docufier.app
+productName: Docufier
+mac:
+  category: public.app-category.productivity
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: assets/icons/icon.icns
+  extendInfo:
+    CFBundleDocumentTypes:
+      - CFBundleTypeName: Docufier Document
+        CFBundleTypeRole: Viewer
+        CFBundleTypeIconFile: icon.icns
+        LSItemContentTypes:
+          - com.docufier.document
+        LSHandlerRank: Owner
+    UTExportedTypeDeclarations:
+      - UTTypeIdentifier: com.docufier.document
+        UTTypeDescription: Docufier Document
+        UTTypeTagSpecification:
+          public.filename-extension:
+            - docf
+        UTTypeConformsTo:
+          - public.data
+          - public.archive
+
+files:
+  - src/**/*
+  - assets/**/*
+  - node_modules/**/*
+
+directories:
+  buildResources: assets
+
